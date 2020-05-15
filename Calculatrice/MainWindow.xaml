@@ -5,25 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculatrice"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="Calculatrice" Height="451.419" Width="343.103"
         KeyDown="Window_KeyDown">
-    <Grid Margin="0,0,320,199">
-        <Button Content="2" HorizontalAlignment="Left" Margin="90,110,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="1" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="3" HorizontalAlignment="Left" Margin="170,110,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="5" HorizontalAlignment="Left" Margin="90,85,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="4" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="6" HorizontalAlignment="Left" Margin="170,85,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="8" HorizontalAlignment="Left" Margin="90,60,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="7" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="9" HorizontalAlignment="Left" Margin="170,60,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="+" HorizontalAlignment="Left" Margin="261,110,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="261,85,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="/" HorizontalAlignment="Left" Margin="261,135,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="0" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Width="155" RenderTransformOrigin="0.544,1.734" Click="Button_Click"/>
-        <Button Content="=" HorizontalAlignment="Left" Margin="170,135,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="Button_Click"/>
-        <Button Content="*" HorizontalAlignment="Left" Margin="261,60,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <TextBox Text="{Binding Resultat}" HorizontalAlignment="Left" Height="23" Margin="10,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326" />
-        
+    <Grid Margin="0,0,3.4,1.2">
+        <Button Content="2" HorizontalAlignment="Left" Margin="90,314,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="1" HorizontalAlignment="Left" Margin="10,314,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="3" HorizontalAlignment="Left" Margin="170,314,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="5" HorizontalAlignment="Left" Margin="90,263,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="4" HorizontalAlignment="Left" Margin="10,263,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="6" HorizontalAlignment="Left" Margin="170,263,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="8" HorizontalAlignment="Left" Margin="90,212,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="7" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="9" HorizontalAlignment="Left" Margin="170,212,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="+" HorizontalAlignment="Left" Margin="250,314,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="-" HorizontalAlignment="Left" Margin="250,263,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="/" HorizontalAlignment="Left" Margin="250,161,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="0" HorizontalAlignment="Left" Margin="90,365,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.544,1.734" Click="Button_Click" Height="46"/>
+        <Button Content="=" HorizontalAlignment="Left" Margin="250,365,0,0" VerticalAlignment="Top" Width="75" Height="46" Click="Button_Click"/>
+        <Button Content="*" HorizontalAlignment="Left" Margin="250,212,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="%" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="CE" HorizontalAlignment="Left" Margin="90,110,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="C" HorizontalAlignment="Left" Margin="170,110,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="⇦" HorizontalAlignment="Left" Margin="250,110,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="1/x" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="x²" HorizontalAlignment="Left" Margin="90,161,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="²√x" HorizontalAlignment="Left" Margin="170,161,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="," HorizontalAlignment="Left" Margin="170,365,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <Button Content="+/-" HorizontalAlignment="Left" Margin="10,365,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="46"/>
+        <TextBox Text="{Binding SumCalcul}" HorizontalAlignment="Left" Height="23" Margin="2,19,-1.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="333" />
+        <TextBox Text="{Binding Resultat}" HorizontalAlignment="Left" Height="61" Margin="1,44,-0.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="333" />
     </Grid>
 </Window>

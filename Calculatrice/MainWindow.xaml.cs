@@ -28,14 +28,34 @@ namespace Calculatrice
         {
             InitializeComponent();
             _vm = new MainViewModel();
-            _vm.Resultat = "Ouite";
+            _vm.Resultat = "";
+            _vm.SumCalcul = "";
             this.DataContext = _vm;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Controls.Button b = (System.Windows.Controls.Button)sender;
-            _vm.Resultat = b.Content.ToString();
+
+            _vm.Resultat += b.Content.ToString();
+
+            if (b.Content.ToString() is "+")
+            {
+                _vm.SumCalcul += _vm.Resultat;
+                _vm.Resultat = "";
+            }
+
+            if (b.Content.ToString() is "=")
+            {
+                //calcul de _vm.SumCalcul et _vm.Resultat
+                //Affichage du resultat dans _vm.Resultat
+                _vm.SumCalcul += _vm.Resultat;
+                _vm.Resultat = "Résultat calcul";
+                
+            }
+
+
+
         }
 
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
