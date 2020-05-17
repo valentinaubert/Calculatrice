@@ -13,5 +13,11 @@ namespace Calculatrice
             get { return GetValue<string>(); }
             set { SetValue(value); }
         }
+
+        public string SumCalcul
+        {
+            get { return GetValue<string>(); }
+            set { SetValue(value); }
+        }
     }
 }

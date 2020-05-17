@@ -5,24 +5,268 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculatrice"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Margin="0,0,320,199">
-        <Button Content="2" HorizontalAlignment="Left" Margin="90,110,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="1" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="3" HorizontalAlignment="Left" Margin="170,110,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="5" HorizontalAlignment="Left" Margin="90,85,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="4" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="6" HorizontalAlignment="Left" Margin="170,85,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="8" HorizontalAlignment="Left" Margin="90,60,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="7" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="9" HorizontalAlignment="Left" Margin="170,60,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="+" HorizontalAlignment="Left" Margin="261,110,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="261,85,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="/" HorizontalAlignment="Left" Margin="261,135,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="0" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Width="155" RenderTransformOrigin="0.544,1.734" Click="Button_Click"/>
-        <Button Content="=" HorizontalAlignment="Left" Margin="170,135,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="Button_Click"/>
-        <Button Content="*" HorizontalAlignment="Left" Margin="261,60,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <TextBox Text="{Binding Resultat}" HorizontalAlignment="Left" Height="23" Margin="10,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326"/>
+        Title="Calculatrice" Height="563.419" Width="349.503" Background="White"
+        KeyDown="Window_KeyDown">
+    <Window.Resources>
         
+        <Style TargetType="Button" x:Key="Numeros_white">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Width" Value="75"/>
+            <Setter Property="Height" Value="46"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="FontFamily" Value="Adobe Garamond Pro Bold"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                       Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="WhiteSmoke" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Button.MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                      Storyboard.TargetProperty="(Button.Opacity)"
+                                      From="1.0" To="0.5" Duration="0:0:0.5" AutoReverse="True"
+                                      RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+
+                <EventTrigger RoutedEvent="Button.MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                  Storyboard.TargetProperty="(Button.Opacity)"
+                                  To="1" Duration="0:0:0.1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Button" x:Key="Operations_grey">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Width" Value="75"/>
+            <Setter Property="Height" Value="46"/>
+            <Setter Property="FontFamily" Value="Adobe Garamond Pro Bold"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                       Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="DimGray" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Button.MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                      Storyboard.TargetProperty="(Button.Opacity)"
+                                      From="1.0" To="0.5" Duration="0:0:0.5" AutoReverse="True"
+                                      RepeatBehavior="Forever" 
+                                      />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+
+                <EventTrigger RoutedEvent="Button.MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                  Storyboard.TargetProperty="(Button.Opacity)"
+                                  To="1" Duration="0:0:0.1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Button" x:Key="Enter">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Width" Value="155"/>
+            <Setter Property="Height" Value="46"/>
+            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="FontFamily" Value="Adobe Garamond Pro Bold"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Button.MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                      Storyboard.TargetProperty="(Button.Opacity)"
+                                      From="1.0" To="0.5" Duration="0:0:0.5" AutoReverse="True"
+                                      RepeatBehavior="Forever" 
+                                      />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+
+                <EventTrigger RoutedEvent="Button.MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                  Storyboard.TargetProperty="(Button.Opacity)"
+                                  To="1" Duration="0:0:0.1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Button" x:Key="Effacer">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Width" Value="155"/>
+            <Setter Property="Height" Value="46"/>
+            <Setter Property="Background" Value="Beige"/>
+            <Setter Property="FontFamily" Value="Adobe Garamond Pro Bold"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                       Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Bisque" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Button.MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                      Storyboard.TargetProperty="(Button.Opacity)"
+                                      From="1.0" To="0.5" Duration="0:0:0.5" AutoReverse="True"
+                                      RepeatBehavior="Forever" 
+                                      />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+
+                <EventTrigger RoutedEvent="Button.MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                  Storyboard.TargetProperty="(Button.Opacity)"
+                                  To="1" Duration="0:0:0.1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBox" x:Key="TextBoxCalcul">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Width" Value="333"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontFamily" Value="Adobe Garamond Pro Bold"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="TextAlignment" Value="Right"/>
+        </Style>
+        <Style TargetType="TextBox" x:Key="TextBoxResult">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Width" Value="333"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontFamily" Value="Adobe Garamond Pro Bold"/>
+            <Setter Property="FontSize" Value="35"/>
+            <Setter Property="TextAlignment" Value="Right"/>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid Margin="0,0,3.4,1.2">
+
+        <Button Style="{StaticResource Numeros_white}" Content="0" Margin="90,468,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Numeros_white}" Content="1" Margin="10,417,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Numeros_white}" Content="2" Margin="90,417,0,0" Click="Button_Click" />
+        <Button Style="{StaticResource Numeros_white}" Content="3" Margin="170,417,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Numeros_white}" Content="4" Margin="10,366,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Numeros_white}" Content="5" Margin="90,366,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Numeros_white}" Content="6" Margin="170,366,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Numeros_white}" Content="7" Margin="10,315,0,0" Width="75" Click="Button_Click"/>
+        <Button Style="{StaticResource Numeros_white}" Content="8" Margin="90,315,0,0" Width="75" Click="Button_Click"/>
+        <Button Style="{StaticResource Numeros_white}" Content="9" Margin="170,315,0,0" Width="75" Click="Button_Click"/>
+
+        <Button Style="{StaticResource Numeros_white}" Content="+/-" Margin="10,468,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Numeros_white}" Content="," Margin="170,468,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Operations_grey}" Content="+" Margin="250,417,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Operations_grey}" Content="-" Margin="250,366,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Operations_grey}" Content="*" Margin="250,315,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Operations_grey}" Content="/" Margin="250,468,0,0" Click="Button_Click"/>
+
+        <Button Style="{StaticResource Enter}" Content="=" Margin="170,263,0,0" Click="Button_Click"/>
+
+        <Button Style="{StaticResource Effacer}" Content="⇦" Margin="170,110,0,0" Click="Button_Click"/>
+
+        <Button Style="{StaticResource Operations_grey}" Content="㏒" Margin="250,161,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Operations_grey}" Content="%" Margin="250,212,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Operations_grey}" Content="CE" Margin="10,110,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Operations_grey}" Content="C" Margin="90,110,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Operations_grey}" Content="÷" Margin="10,161,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Operations_grey}" Content="^" Margin="90,161,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Operations_grey}" Content="√" Margin="170,161,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Operations_grey}" Content="(" Margin="10,263,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Operations_grey}" Content=")" Margin="90,263,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Operations_grey}" Content="sin" Margin="90,212,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Operations_grey}" Content="cos" Margin="10,212,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Operations_grey}" Content="tan" Margin="170,212,0,0" Click="Button_Click"/>
+
+        <TextBox Style="{StaticResource TextBoxCalcul}" Text="{Binding SumCalcul}" Height="23" Margin="2,19,-1.6,0" SelectedText="False"/>
+        <TextBox Style="{StaticResource TextBoxResult}" Text="{Binding Resultat}" Height="61" Margin="1,44,-0.6,0"/>
     </Grid>
 </Window>
