@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Runtime;
 
 namespace Calculatrice
 {
@@ -30,6 +31,7 @@ namespace Calculatrice
             _vm = new MainViewModel();
             _vm.Resultat = "";
             this.DataContext = _vm;
+            TB_expression.Focus();
             AffichageTest();
         }
 
@@ -38,32 +40,40 @@ namespace Calculatrice
             Button b = (Button)sender;
             _vm.Resultat += b.Content.ToString();
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-        
+           
 
         private static List<string> Decoupage(string calcul)
         {
             //Création d'une List qui récupèrera toutes les différentes parties du calcul
             var expression = new List<string>();
 
-            int memoireInt = 0;
+            decimal memoireInt = 0;
+            decimal puissance = 1;
             //Lecture du calcul caractères par caractères
             foreach (char c in calcul)
             {
                 if(CheckIntUnit(c) == true)
                 {
-                    memoireInt = memoireInt * 10;
-                    memoireInt += int.Parse(c.ToString());
-
+                    if(puissance == 1)
+                    {
+                        memoireInt = memoireInt * 10;
+                        memoireInt += decimal.Parse(c.ToString());
+                    }
+                    else
+                    {
+                        memoireInt += (decimal.Parse(c.ToString())) * puissance;
+                        puissance /= 10;
+                    }                   
+                }
+                else if((c.ToString()).Contains("."))
+                {
+                    puissance /= 10;
                 }
                 else
                 {
                     expression.Add(memoireInt.ToString());
                     memoireInt = 0;
+                    puissance = 1;
                     expression.Add(c.ToString());
                 }
             }
@@ -72,33 +82,45 @@ namespace Calculatrice
             return expression;
         }
 
-        private static int Calcul(List<string> liste)
+        private static decimal Calcul(List<string> liste)
         {
-            int test = 0;
-            string operateur = "+";
+            string operateur = "";
+            decimal num1 = 0;
+            decimal num2 = 0;
             foreach (string p in liste)
-            {
+            {                                
                 if(isNumeric(p) == true)
                 {
-                    
+                    if (num1 != 0)
+                    {
+                        num2 = decimal.Parse(p);
+                        num1 = CheckOperateur(num1, num2, operateur);
+                    }
+                    else num1 = decimal.Parse(p);
                 }
                 else
                 {
                     operateur = p;
                 }
             }
-            return 0;
+            return num1;
         }
+               
 
         private void AffichageTest()
         {
-            string test = "54+37-54654";
+            string test = "5+3.7";
             List<string> liste = new List<string>();
             liste = Decoupage(test);
-            foreach(string s in liste)
+
+            foreach (string s in liste)
             {
                 MessageBox.Show(s);
             }
+
+            test = (Calcul(liste)).ToString();
+            MessageBox.Show("Résultat : " + test);
+            
             
         }
 
@@ -114,24 +136,21 @@ namespace Calculatrice
 
         private static Boolean isNumeric(string number)
         {
-            int i = 0;
-            bool result = int.TryParse(number, out i);
+            decimal i = 0;
+            bool result = decimal.TryParse(number, out i);
             return result;
-        }
+        }       
 
-        private static string CheckOperateur(string operateur, string ajout, int resultat)
+        private static decimal CheckOperateur(decimal n1, decimal n2, string o)
         {
-            string op = operateur;
-            switch(op)
+            switch (o)
             {
-                case "+": resultat += int.Parse(ajout);break;
-                case "-": resultat -= int.Parse(ajout); break;
-                case "*": resultat *= int.Parse(ajout); break;
-                case "/": resultat /= int.Parse(ajout); break;
+                case "+": n1 = n1 + n2; break;
+                case "-": n1 = n1 - n2; break;
+                case "*": n1 = n1 * n2; break;
+                case "/": n1 = n1 / n2; break;
             }
-            return op;
+            return n1;
         }
-
-
     }
 }
