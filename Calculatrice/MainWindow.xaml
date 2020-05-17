@@ -18,6 +18,22 @@
             <Setter Property="FontFamily" Value="Adobe Garamond Pro Bold"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                       Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="WhiteSmoke" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
             <Style.Triggers>
                 <EventTrigger RoutedEvent="Button.MouseEnter">
                     <EventTrigger.Actions>
@@ -26,13 +42,7 @@
                                 <DoubleAnimation
                                       Storyboard.TargetProperty="(Button.Opacity)"
                                       From="1.0" To="0.5" Duration="0:0:0.5" AutoReverse="True"
-                                      RepeatBehavior="Forever" 
-                                      />
-                                <ColorAnimation 
-                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                    From="WhiteSmoke" To="WhiteSmoke" Duration="0:0:0.5"/>
-
-
+                                      RepeatBehavior="Forever"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger.Actions>
@@ -45,9 +55,6 @@
                                 <DoubleAnimation
                                   Storyboard.TargetProperty="(Button.Opacity)"
                                   To="1" Duration="0:0:0.1" />
-                                <ColorAnimation
-                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                    To="White" Duration="0:0:0.1"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger.Actions>
@@ -63,6 +70,22 @@
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Background" Value="LightGray"/>
             <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                       Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="DimGray" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
             <Style.Triggers>
                 <EventTrigger RoutedEvent="Button.MouseEnter">
                     <EventTrigger.Actions>
@@ -73,11 +96,6 @@
                                       From="1.0" To="0.5" Duration="0:0:0.5" AutoReverse="True"
                                       RepeatBehavior="Forever" 
                                       />
-                                <ColorAnimation 
-                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                    From="WhiteSmoke" To="WhiteSmoke" Duration="0:0:0.5"/>
-
-
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger.Actions>
@@ -90,9 +108,6 @@
                                 <DoubleAnimation
                                   Storyboard.TargetProperty="(Button.Opacity)"
                                   To="1" Duration="0:0:0.1" />
-                                <ColorAnimation
-                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                    To="LightGray" Duration="0:0:0.1"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger.Actions>
@@ -104,7 +119,7 @@
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="Width" Value="155"/>
             <Setter Property="Height" Value="46"/>
-            <Setter Property="Background" Value="Aqua"/>
+            <Setter Property="Background" Value="LightBlue"/>
             <Setter Property="FontFamily" Value="Adobe Garamond Pro Bold"/>
             <Setter Property="FontSize" Value="30"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -118,11 +133,6 @@
                                       From="1.0" To="0.5" Duration="0:0:0.5" AutoReverse="True"
                                       RepeatBehavior="Forever" 
                                       />
-                                <ColorAnimation 
-                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                    From="WhiteSmoke" To="WhiteSmoke" Duration="0:0:0.5"/>
-
-
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger.Actions>
@@ -135,9 +145,6 @@
                                 <DoubleAnimation
                                   Storyboard.TargetProperty="(Button.Opacity)"
                                   To="1" Duration="0:0:0.1" />
-                                <ColorAnimation
-                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                    To="Aqua" Duration="0:0:0.1"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger.Actions>
@@ -153,6 +160,22 @@
             <Setter Property="FontFamily" Value="Adobe Garamond Pro Bold"/>
             <Setter Property="FontSize" Value="30"/>
             <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                       Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Bisque" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
             <Style.Triggers>
                 <EventTrigger RoutedEvent="Button.MouseEnter">
                     <EventTrigger.Actions>
@@ -163,11 +186,6 @@
                                       From="1.0" To="0.5" Duration="0:0:0.5" AutoReverse="True"
                                       RepeatBehavior="Forever" 
                                       />
-                                <ColorAnimation 
-                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                    From="WhiteSmoke" To="WhiteSmoke" Duration="0:0:0.5"/>
-
-
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger.Actions>
@@ -180,9 +198,6 @@
                                 <DoubleAnimation
                                   Storyboard.TargetProperty="(Button.Opacity)"
                                   To="1" Duration="0:0:0.1" />
-                                <ColorAnimation
-                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                    To="Beige" Duration="0:0:0.1"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger.Actions>
@@ -249,7 +264,7 @@
         <Button Style="{StaticResource Operations_grey}" Content=")" Margin="90,263,0,0" Click="Button_Click"/>
         <Button Style="{StaticResource Operations_grey}" Content="sin" Margin="90,212,0,0" Click="Button_Click"/>
         <Button Style="{StaticResource Operations_grey}" Content="cos" Margin="10,212,0,0" Click="Button_Click"/>
-        <Button x:Name="Button1" Style="{StaticResource Operations_grey}" Content="tan" Margin="170,212,0,0" Click="Button_Click"/>
+        <Button Style="{StaticResource Operations_grey}" Content="tan" Margin="170,212,0,0" Click="Button_Click"/>
 
         <TextBox Style="{StaticResource TextBoxCalcul}" Text="{Binding SumCalcul}" Height="23" Margin="2,19,-1.6,0" SelectedText="False"/>
         <TextBox Style="{StaticResource TextBoxResult}" Text="{Binding Resultat}" Height="61" Margin="1,44,-0.6,0"/>

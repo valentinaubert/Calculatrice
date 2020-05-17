@@ -58,9 +58,7 @@ namespace Calculatrice
                 if (b.Content.ToString() is "+" ||
                     b.Content.ToString() is "-" ||
                     b.Content.ToString() is "*" ||
-                    b.Content.ToString() is "/" ||
-                    b.Content.ToString() is "%" ||
-                    b.Content.ToString() is "÷")
+                    b.Content.ToString() is "/")
                 {
                     _vm.SumCalcul += _vm.Resultat;
                     _vm.Resultat = "";
@@ -82,6 +80,20 @@ namespace Calculatrice
 
                 if (b.Content.ToString() is "C")
                 {
+                    _vm.Resultat = "";
+                    _vm.SumCalcul = "";
+                }
+
+                if (b.Content.ToString() is "%" ||
+                    b.Content.ToString() is "㏒" ||
+                    b.Content.ToString() is "÷" ||
+                    b.Content.ToString() is "^" ||
+                    b.Content.ToString() is "√" ||
+                    b.Content.ToString() is "sin" ||
+                    b.Content.ToString() is "cos" ||
+                    b.Content.ToString() is "tan")
+                {
+                    System.Windows.MessageBox.Show("Ce calcul n'est pas implementée encore.");
                     _vm.Resultat = "";
                     _vm.SumCalcul = "";
                 }
@@ -188,36 +200,60 @@ namespace Calculatrice
                 _vm.Resultat += "%";
                 _vm.SumCalcul += _vm.Resultat;
                 _vm.Resultat = "";
+                System.Windows.MessageBox.Show("Ce calcul n'est pas implementée encore.");
+                _vm.Resultat = "";
+                _vm.SumCalcul = "";
             }
             if (e.Key == Key.D)
             {
                 _vm.Resultat += "÷";
                 _vm.SumCalcul += _vm.Resultat;
                 _vm.Resultat = "";
+                System.Windows.MessageBox.Show("Ce calcul n'est pas implementée encore.");
+                _vm.Resultat = "";
+                _vm.SumCalcul = "";
             }
             if (e.Key == Key.E)
             {
                 _vm.Resultat += "^";
+                System.Windows.MessageBox.Show("Ce calcul n'est pas implementée encore.");
+                _vm.Resultat = "";
+                _vm.SumCalcul = "";
             }
             if (e.Key == Key.V)
             {
                 _vm.Resultat += "√";
+                System.Windows.MessageBox.Show("Ce calcul n'est pas implementée encore.");
+                _vm.Resultat = "";
+                _vm.SumCalcul = "";
             }
             if (e.Key == Key.L)
             {
                 _vm.Resultat += "㏒";
+                System.Windows.MessageBox.Show("Ce calcul n'est pas implementée encore.");
+                _vm.Resultat = "";
+                _vm.SumCalcul = "";
             }
             if (e.Key == Key.T)
             {
                 _vm.Resultat += "tan";
+                System.Windows.MessageBox.Show("Ce calcul n'est pas implementée encore.");
+                _vm.Resultat = "";
+                _vm.SumCalcul = "";
             }
             if (e.Key == Key.C)
             {
                 _vm.Resultat += "cos";
+                System.Windows.MessageBox.Show("Ce calcul n'est pas implementée encore.");
+                _vm.Resultat = "";
+                _vm.SumCalcul = "";
             }
             if (e.Key == Key.S)
             {
                 _vm.Resultat += "sin";
+                System.Windows.MessageBox.Show("Ce calcul n'est pas implementée encore.");
+                _vm.Resultat = "";
+                _vm.SumCalcul = "";
             }
 
         }
